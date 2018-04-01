@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import BaseView from './components/BaseView';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-      Initial setup done.
-      </div>
+      <BaseView/>
     );
   }
 }
