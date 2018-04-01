@@ -4,6 +4,7 @@ import AppHeader from './AppHeader';
 import Sidebar from './Sidebar';
 import AllPosts from './AllPosts';
 import CreatePost from './CreatePost';
+import PostDetail from './PostDetail';
 
 
 class BaseView extends Component {
@@ -17,6 +18,7 @@ class BaseView extends Component {
             <Switch>
               <Route exact path="/" component={AllPosts} />
               <Route exact path="/posts/create" component={CreatePost} />
+              <Route exact path="/:category/:post_id" component={PostDetail} />
             </Switch>
           </div>
         </main>
