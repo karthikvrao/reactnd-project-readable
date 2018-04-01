@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import AppHeader from './AppHeader';
 import Sidebar from './Sidebar';
 import AllPosts from './AllPosts';
+import CreatePost from './CreatePost';
 
 
 class BaseView extends Component {
@@ -13,7 +14,10 @@ class BaseView extends Component {
         <main>
           <Sidebar />
           <div className="content">
-            <Route exact path="/" component={AllPosts} />
+            <Switch>
+              <Route exact path="/" component={AllPosts} />
+              <Route exact path="/posts/create" component={CreatePost} />
+            </Switch>
           </div>
         </main>
       </div>
