@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import AppHeader from './AppHeader';
+import Sidebar from './Sidebar';
+
 
 class BaseView extends Component {
   render() {
@@ -8,7 +10,9 @@ class BaseView extends Component {
       <div className="base">
         <AppHeader />
         <main>
-
+          <Sidebar />
+          <div className="content">
+          </div>
         </main>
       </div>
     );
