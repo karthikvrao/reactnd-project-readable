@@ -18,7 +18,7 @@ class CreatePost extends Component {
       body: false
     },
     redirectToPath: ''
-  }
+  };
 
   handleChangeTitle = event => {
     const value = event.target.value;

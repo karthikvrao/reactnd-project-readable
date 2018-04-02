@@ -10,7 +10,7 @@ import NoMatch from './NoMatch';
 class PostDetail extends Component {
   state = {
     redirectOnDelete: false
-  }
+  };
 
   componentDidMount() {
     const { match, getPostTAC } = this.props;
