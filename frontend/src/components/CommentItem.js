@@ -39,12 +39,12 @@ class CommentItem extends Component {
           <span className="commentAuthor">{comment.author}</span>
           <span>{moment(comment.timestamp).format('MMMM Do YYYY, h:mm:ss a')}</span>
           <div>
-            <span id="editComment" onClick={this.handleClickEditComment}>
+            <span className="editComment" onClick={this.handleClickEditComment}>
               Edit
-          </span>
-            <span id="deleteComment" onClick={this.handleClickDeleteComment}>
+            </span>
+            <span className="deleteComment" onClick={this.handleClickDeleteComment}>
               Delete
-          </span>
+            </span>
           </div>
         </div>
       </article>
