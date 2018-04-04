@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
-import { votePostTAC } from '../utils/helpers';
+import { votePostTAC, deletePostTAC } from '../utils/helpers';
 
 class PostItem extends Component {
   upVotePost = () => {
@@ -13,6 +13,11 @@ class PostItem extends Component {
   downVotePost = () => {
     const { post, votePostTAC } = this.props;
     votePostTAC(post.id, "downVote");
+  }
+
+  handleClickDeletePost = () => {
+    const { post, deletePostTAC } = this.props;
+    deletePostTAC(post.id);
   }
 
   render() {
@@ -29,18 +34,26 @@ class PostItem extends Component {
           <p>Comments</p>
           <span>{post.commentCount}</span>
         </aside>
-        <Link className="postData" to={`/${post.category}/${post.id}`}>
-          <h3 className="postTitle">{post.title}</h3>
+        <div className="postData">
+          <h3 className="postTitle"><Link className="postDetail" to={`/${post.category}/${post.id}`}>{post.title}</Link></h3>
           <p className="postBody">{post.body}</p>
           <footer className="postInfo">
             <span className="postCategory">{post.category}</span>
             <span className="postAuthor">By: {post.author}</span>
             <span className="postTimestamp">{moment(post.timestamp).format('MMMM Do YYYY, h:mm:ss a')}</span>
+            <div>
+              <span className="editPost">
+                <Link to={`/${post.category}/${post.id}/edit`}>Edit</Link>
+              </span>
+              <span className="deletePost" onClick={this.handleClickDeletePost}>
+                Delete
+              </span>
+            </div>
           </footer>
-        </Link>
+        </div>
       </article>
     );
   }
 }
 
-export default connect(null, { votePostTAC })(PostItem);
+export default connect(null, { votePostTAC, deletePostTAC })(PostItem);

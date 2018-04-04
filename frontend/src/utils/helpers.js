@@ -5,7 +5,7 @@ import {
 import {
   getAllCategories, getAllPosts, getCategoryPosts, getPost,
   getAllPostComments, getComment, votePost, voteComment,
-  createPostComment, editComment, deleteComment,
+  createPostComment, editComment, deleteComment, deletePost,
 } from './api';
 
 
@@ -41,6 +41,10 @@ export const getPostTAC = postId => dispatch =>
 // Thunk action creator to vote for a post with a given Id and vote option
 export const votePostTAC = (postId, option) => dispatch =>
   votePost(postId, option).then(data => dispatch(updateSinglePost(data)));
+
+// Thunk action creator to delete a post with a given Id
+export const deletePostTAC = postId => dispatch =>
+  deletePost(postId).then(data => dispatch(updateSinglePost(data)));
 
 
 // TACs for Comments

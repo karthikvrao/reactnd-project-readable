@@ -96,6 +96,7 @@ option {
 p {
   font-size: 16px;
 }
+
 pre {
   white-space: pre-wrap;
 }
@@ -272,9 +273,12 @@ main {
   flex-direction: column;
 }
 
-.postData:hover {
-  background-color: #ff8000;
-  opacity: 0.8;
+.postTitle {
+  margin-bottom: 10px;
+}
+
+.postDetail:hover {
+  color: #ff8000;
 }
 
 .postBody {
@@ -291,8 +295,11 @@ main {
   width: 40%;
 }
 
-.postAuthor {
-  flex-grow: 1;
+.editPost,
+.deletePost {
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: 10px;
 }
 
 /* Post list style end */
