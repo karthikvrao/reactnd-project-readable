@@ -26,7 +26,7 @@ class EditPost extends Component {
 
     // Initial loading of post into state
     if (posts !== nextPosts) {
-      this.setState({ editPost: Object.values(nextPosts)[0] });
+      this.setState({ editPost: { ...Object.values(nextPosts)[0] } });
     }
   }
 

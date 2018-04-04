@@ -13,7 +13,7 @@ class EditComment extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (this.props !== nextProps) {
-      this.setState({ editComment: nextProps.editComment });
+      this.setState({ editComment: { ...nextProps.editComment } });
     }
   }
 
