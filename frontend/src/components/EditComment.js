@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { setEditComment } from '../actions';
 import { editCommentTAC } from '../utils/helpers';
 import GenericModal from './GenericModal';
 
@@ -28,6 +30,7 @@ class EditComment extends Component {
   }
 
   handleClickDismiss = () => {
+    const { setEditComment, closeModal } = this.props;
     this.setState(prevState => {
       const newState = { ...prevState };
       newState.editComment = {};
@@ -36,7 +39,8 @@ class EditComment extends Component {
       }
       return newState;
     });
-    this.props.closeModal();
+    setEditComment({});
+    closeModal();
   }
 
   handleClickSave = event => {
@@ -80,4 +84,13 @@ class EditComment extends Component {
   }
 }
 
-export default connect(null, { editCommentTAC })(EditComment);
+const mapStateToProps = ({ editComment }) => ({ editComment });
+
+const mapDispatchToProps = dispatch => ({
+  ...bindActionCreators({
+    editCommentTAC,
+    setEditComment
+  }, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditComment);

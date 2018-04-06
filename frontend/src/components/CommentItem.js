@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import moment from 'moment';
+import { setEditComment } from '../actions';
 import { voteCommentTAC, deleteCommentTAC } from '../utils/helpers';
 
 class CommentItem extends Component {
@@ -15,8 +17,9 @@ class CommentItem extends Component {
   }
 
   handleClickEditComment = () => {
-    const { comment } = this.props;
-    this.props.onClickEdit(comment);
+    const { comment, setEditComment, onClickEdit } = this.props;
+    setEditComment(comment);
+    onClickEdit();
   }
 
   handleClickDeleteComment = () => {
@@ -52,4 +55,12 @@ class CommentItem extends Component {
   }
 }
 
-export default connect(null, { voteCommentTAC, deleteCommentTAC })(CommentItem);
+const mapDispatchToProps = dispatch => ({
+  ...bindActionCreators({
+    voteCommentTAC,
+    deleteCommentTAC,
+    setEditComment
+  }, dispatch)
+});
+
+export default connect(null, mapDispatchToProps)(CommentItem);

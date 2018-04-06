@@ -34,7 +34,9 @@ export const updateSinglePost = post => ({ type: UPDATE_POST, post });
 export const GET_COMMENTS = 'GET_COMMENTS';
 export const GET_COMMENT = 'GET_COMMENT';
 export const UPDATE_COMMENT = 'UPDATE_COMMENT';
+export const SET_EDIT_COMMENT = 'SET_EDIT_COMMENT';
 
 export const getComments = comments => ({ type: GET_COMMENTS, comments });
 export const getSingleComment = comment => ({ type: GET_COMMENT, comment });
 export const updateSingleComment = comment => ({ type: UPDATE_COMMENT, comment });
+export const setEditComment = comment => ({ type: SET_EDIT_COMMENT, comment });

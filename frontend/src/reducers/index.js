@@ -1,5 +1,9 @@
 import { combineReducers } from 'redux';
-import { sortByOptions, CHANGE_SORT_BY, GET_CATEGORIES, GET_POSTS, GET_POST, GET_COMMENTS, GET_COMMENT, UPDATE_POST, UPDATE_COMMENT } from '../actions';
+import {
+  sortByOptions, CHANGE_SORT_BY, GET_CATEGORIES,
+  GET_POSTS, GET_POST, GET_COMMENTS, GET_COMMENT,
+  UPDATE_POST, UPDATE_COMMENT, SET_EDIT_COMMENT,
+} from '../actions';
 import { arrToObj } from '../utils/helpers';
 
 
@@ -55,4 +59,16 @@ const comments = (state = {}, action) => {
   }
 };
 
-export default combineReducers({ chosenSortBy, categories, posts, comments });
+const editComment = (state = {}, action) => {
+  const { comment } = action;
+  switch (action.type) {
+    case SET_EDIT_COMMENT:
+      return comment;
+    default:
+      return state;
+  }
+}
+
+export default combineReducers({
+  chosenSortBy, categories, posts, comments, editComment,
+});

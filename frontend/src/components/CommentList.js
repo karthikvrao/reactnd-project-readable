@@ -10,7 +10,6 @@ class CommentList extends Component {
   state = {
     openAddCommentModal: false,
     openEditCommentModal: false,
-    editComment: {}
   };
 
   componentDidMount() {
@@ -26,8 +25,8 @@ class CommentList extends Component {
     this.setState({ openAddCommentModal: false });
   }
 
-  openEditCommentModal = (editComment) => {
-    this.setState({ openEditCommentModal: true, editComment });
+  openEditCommentModal = () => {
+    this.setState({ openEditCommentModal: true });
   }
 
   closeEditCommentModal = () => {
@@ -36,7 +35,7 @@ class CommentList extends Component {
 
   render() {
     const { comments, postId } = this.props;
-    const { editComment } = this.state;
+    const { openAddCommentModal, openEditCommentModal } = this.state;
     const commentList = Object.values(comments).filter(comment => !comment.deleted);
 
     return (
@@ -52,11 +51,11 @@ class CommentList extends Component {
           <div className="noCommentsFound"><h4>No comments found</h4></div> :
           <div className="commentListBody">
             {commentList.map(comment => <CommentItem comment={comment} key={comment.id}
-              onClickEdit={editComment => this.openEditCommentModal(editComment)} />)}
+              onClickEdit={this.openEditCommentModal} />)}
           </div>
         }
-        <CreateComment isOpen={this.state.openAddCommentModal} parentId={postId} closeModal={this.closeAddCommentModal} />
-        <EditComment isOpen={this.state.openEditCommentModal} editComment={editComment} closeModal={this.closeEditCommentModal} />
+        <CreateComment isOpen={openAddCommentModal} parentId={postId} closeModal={this.closeAddCommentModal} />
+        <EditComment isOpen={openEditCommentModal} closeModal={this.closeEditCommentModal} />
       </div>
     );
   }
