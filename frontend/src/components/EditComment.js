@@ -62,7 +62,7 @@ class EditComment extends Component {
       <GenericModal isOpen={isOpen}
         onRequestClose={this.handleClickDismiss}>
         <article id="commentModal">
-          <h3>Comment</h3>
+          <h3>Edit Comment</h3>
           <textarea name="commentBody" id="commentBody" cols="0" rows="10"
             value={editComment.body} onChange={this.handleChangeBody} placeholder="Body" />
           {errors.body && <p className="error">Body cannot be empty.</p>}
