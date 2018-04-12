@@ -11,6 +11,8 @@ class PostList extends Component {
 
   render() {
     const { chosenSortBy, category, postList } = this.props;
+    const noPosts = postList === undefined || postList.length === 0;
+
     return (
       <div className="postList">
         <section id="postListHeader">
@@ -24,14 +26,15 @@ class PostList extends Component {
           </p>
           <label htmlFor="sortBy" id="sortBy">
             Sort By:
-            <select name="sortBy" value={chosenSortBy} onChange={this.handleChangeSortBy}>
+            <select name="sortBy" disabled={noPosts}
+              value={chosenSortBy} onChange={this.handleChangeSortBy}>
               {Object.keys(sortByOptionTexts).map((sortByKey, index) =>
                 <option key={index} value={sortByKey}>{sortByOptionTexts[sortByKey]}</option>)
               }
             </select>
           </label>
         </section>
-        {postList === undefined || postList.length === 0 ?
+        {noPosts ?
           <div className="noPostsFound"><h3>No posts found</h3></div> :
           <div className="postListBody">
             {postList.sort((a, b) => {
