@@ -50,6 +50,11 @@ class EditPost extends Component {
     });
   }
 
+  shouldDisableSave = () => {
+    const { editPost, errors } = this.state;
+    return Object.values(editPost).indexOf('') !== -1 || Object.values(errors).indexOf(true) !== -1;
+  }
+
   handleClickSave = () => {
     editPost(this.state.editPost)
       .then(data => this.setState({ redirectToPath: `/${data.category}/${data.id}` }))
@@ -82,7 +87,7 @@ class EditPost extends Component {
             placeholder="Title" required />
           <Link to={`/${editPost.category}/${editPost.id}`} id="dismissPost" className="a-btn btn-primary">Dismiss</Link>
           <button id="savePost" className="btn-primary"
-            disabled={Object.values(editPost).indexOf('') !== -1 || Object.values(errors).indexOf(true) !== -1}
+            disabled={this.shouldDisableSave()}
             onClick={this.handleClickSave}>
             Save
           </button>

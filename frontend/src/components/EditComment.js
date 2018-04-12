@@ -43,6 +43,11 @@ class EditComment extends Component {
     closeModal();
   }
 
+  shouldDisableSave = () => {
+    const { editComment, errors } = this.state;
+    return Object.values(editComment).indexOf('') !== -1 || Object.values(errors).indexOf(true) !== -1;
+  }
+
   handleClickSave = event => {
     const { editCommentTAC } = this.props;
     const { editComment } = this.state;
@@ -73,7 +78,7 @@ class EditComment extends Component {
               Dismiss
             </button>
             <button className="btn-primary" id="saveComment"
-              disabled={Object.values(editComment).indexOf('') !== -1 || Object.values(errors).indexOf(true) !== -1}
+              disabled={this.shouldDisableSave()}
               onClick={this.handleClickSave}>
               Save
             </button>
