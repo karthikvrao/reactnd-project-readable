@@ -17,20 +17,12 @@ class CommentList extends Component {
     getPostCommentsTAC(postId);
   }
 
-  openAddCommentModal = () => {
-    this.setState({ openAddCommentModal: true });
+  toggleAddCommentModal = () => {
+    this.setState({ openAddCommentModal: !this.state.openAddCommentModal });
   }
 
-  closeAddCommentModal = () => {
-    this.setState({ openAddCommentModal: false });
-  }
-
-  openEditCommentModal = () => {
-    this.setState({ openEditCommentModal: true });
-  }
-
-  closeEditCommentModal = () => {
-    this.setState({ openEditCommentModal: false });
+  toggleEditCommentModal = () => {
+    this.setState({ openEditCommentModal: !this.state.openEditCommentModal });
   }
 
   render() {
@@ -43,7 +35,7 @@ class CommentList extends Component {
         <header id="commentListHeader">
           <p>Comments:</p>
           <span id="commentsCount">{commentList.length}</span>
-          <button className="btn-primary" id="addComment" onClick={this.openAddCommentModal}>
+          <button className="btn-primary" id="addComment" onClick={this.toggleAddCommentModal}>
             Add
           </button>
         </header>
@@ -51,11 +43,11 @@ class CommentList extends Component {
           <div className="noCommentsFound"><h4>No comments found</h4></div> :
           <div className="commentListBody">
             {commentList.map(comment => <CommentItem comment={comment} key={comment.id}
-              onClickEdit={this.openEditCommentModal} />)}
+              onClickEdit={this.toggleEditCommentModal} />)}
           </div>
         }
-        <CreateComment isOpen={openAddCommentModal} parentId={postId} closeModal={this.closeAddCommentModal} />
-        <EditComment isOpen={openEditCommentModal} closeModal={this.closeEditCommentModal} />
+        <CreateComment isOpen={openAddCommentModal} parentId={postId} closeModal={this.toggleAddCommentModal} />
+        <EditComment isOpen={openEditCommentModal} closeModal={this.toggleEditCommentModal} />
       </div>
     );
   }
