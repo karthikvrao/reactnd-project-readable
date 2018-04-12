@@ -67,7 +67,7 @@ const editComment = (state = {}, action) => {
     default:
       return state;
   }
-}
+};
 
 export default combineReducers({
   chosenSortBy, categories, posts, comments, editComment,
