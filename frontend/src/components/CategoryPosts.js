@@ -10,7 +10,7 @@ class CategoryPosts extends Component {
     this.props.getCategoryPostsTAC(match.params.category);
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     const { match } = this.props;
     const { match: prevMatch } = prevProps;
     if (prevMatch.params.category !== match.params.category) {
