@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PostList from './PostList';
-import { getCategoryPostsTAC } from '../utils/helpers';
+import { getCategoryPostsTAC } from '../actions/postActions';
 import NoMatch from './NoMatch';
 
 class CategoryPosts extends Component {
   componentDidMount() {
-    const { match, getCategoryPostsTAC } = this.props;
-    getCategoryPostsTAC(match.params.category);
+    const { match } = this.props;
+    this.props.getCategoryPostsTAC(match.params.category);
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { match, getCategoryPostsTAC } = this.props;
+    const { match } = this.props;
     const { match: prevMatch } = prevProps;
     if (prevMatch.params.category !== match.params.category) {
-      getCategoryPostsTAC(match.params.category);
+      this.props.getCategoryPostsTAC(match.params.category);
     }
   }
   render() {

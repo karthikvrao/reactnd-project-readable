@@ -3,7 +3,7 @@ import {
   sortByOptions, CHANGE_SORT_BY, GET_CATEGORIES,
   GET_POSTS, GET_POST, GET_COMMENTS, GET_COMMENT,
   UPDATE_POST, UPDATE_COMMENT, SET_EDIT_COMMENT,
-} from '../actions';
+} from '../actions/actionTypes';
 import { arrToObj } from '../utils/helpers';
 
 

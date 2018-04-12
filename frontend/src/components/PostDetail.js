@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import CommentList from './CommentList';
 import { deletePost } from '../utils/api';
-import { getPostTAC, getPostCommentsTAC, votePostTAC, formatDate } from '../utils/helpers';
+import { getPostTAC, votePostTAC } from '../actions/postActions';
 import NoMatch from './NoMatch';
+import { formatDate } from '../utils/helpers';
 
 class PostDetail extends Component {
   state = {
@@ -12,18 +13,18 @@ class PostDetail extends Component {
   };
 
   componentDidMount() {
-    const { match, getPostTAC } = this.props;
-    getPostTAC(match.params.post_id);
+    const { match } = this.props;
+    this.props.getPostTAC(match.params.post_id);
   }
 
   upVotePost = () => {
-    const { posts, votePostTAC } = this.props;
-    votePostTAC(Object.values(posts)[0].id, "upVote");
+    const { posts } = this.props;
+    this.props.votePostTAC(Object.values(posts)[0].id, "upVote");
   }
 
   downVotePost = () => {
-    const { posts, votePostTAC } = this.props;
-    votePostTAC(Object.values(posts)[0].id, "downVote");
+    const { posts } = this.props;
+    this.props.votePostTAC(Object.values(posts)[0].id, "downVote");
   }
 
   handleClickDelete = () => {
@@ -42,7 +43,7 @@ class PostDetail extends Component {
 
     // To avoid crash on 1st render when data is not yet available
     if (!post) {
-      return null;
+      return <NoMatch />;
     }
 
     // Display NoMatch if post is deleted or categpry in path doesn't match post's category
@@ -86,4 +87,4 @@ class PostDetail extends Component {
 
 const mapStateToProps = ({ posts }) => ({ posts });
 
-export default connect(mapStateToProps, { getPostTAC, getPostCommentsTAC, votePostTAC })(PostDetail);
+export default connect(mapStateToProps, { getPostTAC, votePostTAC })(PostDetail);

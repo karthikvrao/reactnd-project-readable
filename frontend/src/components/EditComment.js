@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { setEditComment } from '../actions';
-import { editCommentTAC } from '../utils/helpers';
+import { setEditComment, editCommentTAC } from '../actions/commentActions';
 import GenericModal from './GenericModal';
 
 class EditComment extends Component {
@@ -49,9 +48,8 @@ class EditComment extends Component {
   }
 
   handleClickSave = event => {
-    const { editCommentTAC } = this.props;
     const { editComment } = this.state;
-    editCommentTAC(editComment).then(this.handleClickDismiss());
+    this.props.editCommentTAC(editComment).then(this.handleClickDismiss());
   }
 
   render() {

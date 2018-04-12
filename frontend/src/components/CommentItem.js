@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { setEditComment } from '../actions';
-import { voteCommentTAC, deleteCommentTAC, formatDate } from '../utils/helpers';
+import { voteCommentTAC, deleteCommentTAC, setEditComment } from '../actions/commentActions';
+import { formatDate } from '../utils/helpers';
 
 class CommentItem extends Component {
   upVoteComment = () => {
-    const { comment, voteCommentTAC } = this.props;
-    voteCommentTAC(comment.id, "upVote");
+    const { comment } = this.props;
+    this.props.voteCommentTAC(comment.id, "upVote");
   }
 
   downVoteComment = () => {
-    const { comment, voteCommentTAC } = this.props;
-    voteCommentTAC(comment.id, "downVote");
+    const { comment } = this.props;
+    this.props.voteCommentTAC(comment.id, "downVote");
   }
 
   handleClickEditComment = () => {
@@ -22,24 +22,24 @@ class CommentItem extends Component {
   }
 
   handleClickDeleteComment = () => {
-    const { comment, deleteCommentTAC } = this.props;
-    deleteCommentTAC(comment.id);
+    const { comment } = this.props;
+    this.props.deleteCommentTAC(comment.id);
   }
 
   render() {
-    const { comment } = this.props;
+    const { comment: { body, voteScore, author, timestamp } } = this.props;
 
     return (
       <article className="comment">
-        <pre className="commentBody">{comment.body}</pre>
+        <pre className="commentBody">{body}</pre>
         <div className="commentInfo">
           <p className="commentVotes">
             <i className="material-icons" onClick={this.downVoteComment}>arrow_drop_down</i>
-            <span className="commentVoteScore">{comment.voteScore}</span>
+            <span className="commentVoteScore">{voteScore}</span>
             <i className="material-icons" onClick={this.upVoteComment}>arrow_drop_up</i>
           </p>
-          <span className="commentAuthor">{comment.author}</span>
-          <span>{formatDate(comment.timestamp)}</span>
+          <span className="commentAuthor">{author}</span>
+          <span>{formatDate(timestamp)}</span>
           <div>
             <span className="editComment" onClick={this.handleClickEditComment}>
               Edit

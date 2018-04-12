@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getPostCommentsTAC } from '../utils/helpers';
+import { getPostCommentsTAC } from '../actions/commentActions';
 import CommentItem from './CommentItem';
 import CreateComment from './CreateComment';
 import EditComment from './EditComment';
@@ -13,8 +13,8 @@ class CommentList extends Component {
   };
 
   componentDidMount() {
-    const { postId, getPostCommentsTAC } = this.props;
-    getPostCommentsTAC(postId);
+    const { postId } = this.props;
+    this.props.getPostCommentsTAC(postId);
   }
 
   toggleAddCommentModal = () => {

@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PostList from './PostList';
-import { getAllPostsTAC } from '../utils/helpers';
+import { getAllPostsTAC } from '../actions/postActions';
 
 class AllPosts extends Component {
   componentDidMount() {
-    const { getAllPostsTAC } = this.props;
-    getAllPostsTAC();
+    this.props.getAllPostsTAC();
   }
 
   render() {

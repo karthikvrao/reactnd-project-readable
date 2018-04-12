@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { createCommentTAC } from '../utils/helpers';
+import { createCommentTAC } from '../actions/commentActions';
 import GenericModal from './GenericModal';
 
 
@@ -71,9 +71,8 @@ class CreateComment extends Component {
   }
 
   handleClickSave = event => {
-    const { createCommentTAC } = this.props;
     const { newComment } = this.state;
-    createCommentTAC(newComment).then(this.handleClickDismiss());
+    this.props.createCommentTAC(newComment).then(this.handleClickDismiss());
   }
 
   render() {

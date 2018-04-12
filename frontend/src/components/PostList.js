@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { sortByOptions, sortByOptionTexts, changeSortBy } from '../actions';
+import { sortByOptions, sortByOptionTexts } from '../actions/actionTypes';
+import changeSortBy from '../actions/sortByActions';
 import PostItem from './PostItem';
 
 class PostList extends Component {
@@ -28,8 +29,8 @@ class PostList extends Component {
             Sort By:
             <select name="sortBy" disabled={noPosts}
               value={chosenSortBy} onChange={this.handleChangeSortBy}>
-              {Object.keys(sortByOptionTexts).map((sortByKey, index) =>
-                <option key={index} value={sortByKey}>{sortByOptionTexts[sortByKey]}</option>)
+              {Object.keys(sortByOptionTexts).map(sortByKey =>
+                <option key={sortByKey} value={sortByKey}>{sortByOptionTexts[sortByKey]}</option>)
               }
             </select>
           </label>

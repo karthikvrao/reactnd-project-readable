@@ -13,30 +13,16 @@ export const sortByOptionTexts = {
 };
 export const CHANGE_SORT_BY = 'CHANGE_SORT_BY';
 
-export const changeSortBy = chosenSortBy => ({ type: CHANGE_SORT_BY, chosenSortBy });
-
 // CATEGORIES
 export const GET_CATEGORIES = 'GET_CATEGORIES';
-
-export const getCategories = categories => ({ type: GET_CATEGORIES, categories });
 
 // POSTS
 export const GET_POSTS = 'GET_POSTS';
 export const GET_POST = 'GET_POST';
 export const UPDATE_POST = 'UPDATE_POST';
 
-export const getPosts = posts => ({ type: GET_POSTS, posts });
-export const getSinglePost = post => ({ type: GET_POST, post });
-export const updateSinglePost = post => ({ type: UPDATE_POST, post });
-
-
 // COMMENTS
 export const GET_COMMENTS = 'GET_COMMENTS';
 export const GET_COMMENT = 'GET_COMMENT';
 export const UPDATE_COMMENT = 'UPDATE_COMMENT';
 export const SET_EDIT_COMMENT = 'SET_EDIT_COMMENT';
-
-export const getComments = comments => ({ type: GET_COMMENTS, comments });
-export const getSingleComment = comment => ({ type: GET_COMMENT, comment });
-export const updateSingleComment = comment => ({ type: UPDATE_COMMENT, comment });
-export const setEditComment = comment => ({ type: SET_EDIT_COMMENT, comment });

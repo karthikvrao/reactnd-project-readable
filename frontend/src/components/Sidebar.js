@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink, withRouter } from 'react-router-dom';
-import { getCategoriesTAC } from '../utils/helpers';
+import { getCategoriesTAC } from '../actions/categoriesActions';
 
 class Sidebar extends Component {
   componentDidMount() {

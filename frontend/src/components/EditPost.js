@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
-import { getPostTAC } from '../utils/helpers';
+import { getPostTAC } from '../actions/postActions';
 import { editPost } from '../utils/api';
 import NoMatch from './NoMatch';
 
@@ -16,8 +16,8 @@ class EditPost extends Component {
   };
 
   componentDidMount() {
-    const { match, getPostTAC } = this.props;
-    getPostTAC(match.params.post_id);
+    const { match } = this.props;
+    this.props.getPostTAC(match.params.post_id);
   }
 
   componentWillReceiveProps(nextProps) {
