@@ -35,7 +35,7 @@ class PostDetail extends Component {
   render() {
     const { redirectOnDelete } = this.state;
     const { match, posts } = this.props;
-    const post = Object.values(posts)[0];
+    const post = posts[match.params.post_id];
 
     if (redirectOnDelete) {
       return <Redirect push to="/" />;
