@@ -548,9 +548,11 @@ main {
 }
 
 .pageNotFound h2 {
-  background-color: #663300;
-  color: #ff8000;
+  color: #663300;
   padding: 10px;
+}
+.pageNotFound h2 a {
+  color: #ff8000;
 }
 
 /* NoMatch end */
