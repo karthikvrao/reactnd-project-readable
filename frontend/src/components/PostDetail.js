@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
-import moment from 'moment';
 import CommentList from './CommentList';
 import { deletePost } from '../utils/api';
-import { getPostTAC, getPostCommentsTAC, votePostTAC } from '../utils/helpers';
+import { getPostTAC, getPostCommentsTAC, votePostTAC, formatDate } from '../utils/helpers';
 import NoMatch from './NoMatch';
 
 class PostDetail extends Component {
@@ -65,7 +64,7 @@ class PostDetail extends Component {
           </div>
           <p className="row2">
             <span className="postAuthor">By: {post.author}</span>
-            <span>{moment(post.timestamp).format('MMMM Do YYYY, h:mm:ss a')}</span>
+            <span>{formatDate(post.timestamp)}</span>
           </p>
           <p className="row3">
             <span className="postCategory">{post.category}</span>

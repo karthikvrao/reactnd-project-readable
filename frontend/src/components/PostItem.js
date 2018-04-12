@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import moment from 'moment';
-import { votePostTAC, deletePostTAC } from '../utils/helpers';
+import { votePostTAC, deletePostTAC, formatDate } from '../utils/helpers';
 
 class PostItem extends Component {
   upVotePost = () => {
@@ -40,7 +39,7 @@ class PostItem extends Component {
           <footer className="postInfo">
             <span className="postCategory">{post.category}</span>
             <span className="postAuthor">By: {post.author}</span>
-            <span className="postTimestamp">{moment(post.timestamp).format('MMMM Do YYYY, h:mm:ss a')}</span>
+            <span className="postTimestamp">{formatDate(post.timestamp)}</span>
             <div>
               <span className="editPost">
                 <Link to={`/${post.category}/${post.id}/edit`}>Edit</Link>

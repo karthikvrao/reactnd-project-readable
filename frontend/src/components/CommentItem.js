@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import moment from 'moment';
 import { setEditComment } from '../actions';
-import { voteCommentTAC, deleteCommentTAC } from '../utils/helpers';
+import { voteCommentTAC, deleteCommentTAC, formatDate } from '../utils/helpers';
 
 class CommentItem extends Component {
   upVoteComment = () => {
@@ -40,7 +39,7 @@ class CommentItem extends Component {
             <i className="material-icons" onClick={this.upVoteComment}>arrow_drop_up</i>
           </p>
           <span className="commentAuthor">{comment.author}</span>
-          <span>{moment(comment.timestamp).format('MMMM Do YYYY, h:mm:ss a')}</span>
+          <span>{formatDate(comment.timestamp)}</span>
           <div>
             <span className="editComment" onClick={this.handleClickEditComment}>
               Edit

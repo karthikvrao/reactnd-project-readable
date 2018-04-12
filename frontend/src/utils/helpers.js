@@ -1,3 +1,4 @@
+import moment from 'moment';
 import {
   getCategories, getPosts, getSinglePost, getComments,
   getSingleComment, updateSinglePost, updateSingleComment,
@@ -70,3 +71,6 @@ export const editCommentTAC = comment => dispatch =>
 // Thunk action creator to delete a comment with a given Id
 export const deleteCommentTAC = commentId => dispatch =>
   deleteComment(commentId).then(data => dispatch(updateSingleComment(data)));
+
+// Return user friendly formatted date
+export const formatDate = timestamp => moment(timestamp).format('MMMM Do YYYY, h:mm:ss a');
