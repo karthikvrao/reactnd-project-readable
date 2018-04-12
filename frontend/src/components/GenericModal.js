@@ -4,15 +4,15 @@ import Modal from 'react-modal';
 
 Modal.setAppElement('#root');
 
-const GenericModal = props =>
+const GenericModal = ({ isOpen, onRequestClose, children }) =>
   <Modal
     className="modal"
     overlayClassName="overlay"
-    isOpen={props.isOpen}
-    onRequestClose={props.onRequestClose}
+    isOpen={isOpen}
+    onRequestClose={onRequestClose}
     contentLabel="Modal"
   >
-    {props.children}
+    {children}
   </Modal>;
 
 export default GenericModal;
