@@ -27,6 +27,10 @@ body,
   height: 100%;
 }
 
+body {
+  background-color: #eeeeee;
+}
+
 a {
   text-decoration: none;
   color: black;
@@ -39,8 +43,9 @@ a {
 }
 
 button {
-  padding: 10px;
+  border-radius: 5px;
   cursor: pointer;
+  padding: 10px;
 }
 
 h1 {
@@ -77,6 +82,7 @@ input[type="text"],
 textarea,
 [contenteditable] {
   border: 1px solid #663300;
+  border-radius: 5px;
   caret-color: #ff8000;
   padding: 5px;
   resize: none;
@@ -128,10 +134,13 @@ main {
   display: flex;
   flex-grow: 1;
   overflow: hidden;
+  align-self: center;
+  width: 90%;
 }
 
 .sidebar {
-  background-color: #eeeeee;
+  background-color: white;
+  width: 20%;
   overflow: auto;
 }
 
@@ -142,7 +151,9 @@ main {
 }
 
 .a-btn {
+  border-radius: 5px;
   padding: 10px;
+  text-align: center;
 }
 
 .btn-primary {
@@ -168,6 +179,7 @@ main {
 
 #categoryList {
   border: 1px solid #663300;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
   margin-top: 5px;
@@ -193,7 +205,7 @@ main {
 }
 
 .content {
-  flex-grow: 1;
+  width: 80%;
   display: flex;
   flex-direction: column;
 }
@@ -209,6 +221,7 @@ main {
 #postListHeader {
   align-items: center;
   background-color: #663300;
+  border-radius: 5px;
   display: flex;
   flex: none;
   padding: 10px;
@@ -241,13 +254,14 @@ main {
 }
 
 .post {
-  border: 1px solid #663300;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0px 1px 20px grey;
   display: flex;
   margin: 0 10px 20px;
 }
 
 .postStats {
-  background-color: #eeeeee;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -306,9 +320,11 @@ main {
 /* New/Edit post start */
 
 #createPost {
+  background-color: white;
   height: 100%;
   overflow: auto;
-  padding: 20px 40px;
+  margin: 20px 40px;
+  padding: 10px;
 }
 
 #postFormRow1 {
@@ -358,13 +374,10 @@ main {
 /* Post detail start */
 
 #postDetail {
+  background-color: white;
   flex-grow: 1;
-  padding: 20px 40px;
+  margin: 20px 40px 0;
   overflow: auto;
-}
-
-#postHeader {
-  background-color: #eeeeee;
 }
 
 #postHeader .row1 {
@@ -408,13 +421,12 @@ main {
 }
 
 #postBody {
-  background-color: #eeeeee;
   margin: 10px 0;
   padding: 10px;
 }
 
 #commentList {
-  border: 1px solid #663300;
+  border-top: 2px solid #663300;
   padding: 10px;
   margin-bottom: 20px;
 }
@@ -551,6 +563,7 @@ main {
   color: #663300;
   padding: 10px;
 }
+
 .pageNotFound h2 a {
   color: #ff8000;
 }
